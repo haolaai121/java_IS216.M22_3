@@ -4,6 +4,10 @@
  */
 package quanlydiem_doanck;
 
+import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+
 /**
  *
  * @author ASUS
@@ -11,10 +15,26 @@ package quanlydiem_doanck;
 public class SinhVien_MainFrame extends javax.swing.JFrame {
 
     /**
+     * @return the maSV
+     */
+    public String getMaSV() {
+        return maSV;
+    }
+
+    /**
+     * @param maSV the maSV to set
+     */
+    public void setMaSV(String maSV) {
+        this.maSV = maSV;
+    }
+
+    /**
      * Creates new form SinhVien_MainFrame
      */
+    private String maSV = "";
     public SinhVien_MainFrame() {
         initComponents();
+        
     }
 
     /**
@@ -27,9 +47,9 @@ public class SinhVien_MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnThongTin = new javax.swing.JButton();
+        btnDiem = new javax.swing.JButton();
+        btnTKB = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -37,27 +57,27 @@ public class SinhVien_MainFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("THÔNG TIN SINH VIÊN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnThongTin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnThongTin.setText("THÔNG TIN SINH VIÊN");
+        btnThongTin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnThongTinActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("ĐIỂM SINH VIÊN");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnDiem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnDiem.setText("ĐIỂM SINH VIÊN");
+        btnDiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnDiemActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("THỜI KHÓA BIỂU SINH VIÊN");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnTKB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnTKB.setText("THỜI KHÓA BIỂU SINH VIÊN");
+        btnTKB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnTKBActionPerformed(evt);
             }
         });
 
@@ -68,20 +88,20 @@ public class SinhVien_MainFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTKB, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDiem, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnThongTin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
+                .addComponent(btnDiem)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(btnTKB)
                 .addGap(48, 48, 48))
         );
 
@@ -128,17 +148,56 @@ public class SinhVien_MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongTinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        SinhVien_ThongTin svFrame = new SinhVien_ThongTin();
+        try 
+        {
+            Connection sqlConnect = null;
+            sqlConnect = SQLServerConnection.getSQLServerConnection();
+            String sqlQuery = "SELECT * FROM SinhVien WHERE MaSV = ?";
+            SQLServerPreparedStatement ps = (SQLServerPreparedStatement)sqlConnect.prepareStatement(sqlQuery);
+            ps.setString(1,maSV);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next())
+            {
+                svFrame.setValueofSV
+                (
+                        maSV, 
+                        rs.getString("TenSV"), 
+                        rs.getString("MaKhoa"), 
+                        rs.getString("MaLop"), 
+                        rs.getString("MaNganh"), 
+                        rs.getString("NgaySinh"), 
+                        rs.getString("GioiTinh"), 
+                        rs.getString("SoDT"),
+                        rs.getString("DiaChi"),
+                        rs.getString("Anh")
+                );
+            }
+        }
+        catch (Exception ex)
+        {
+            
+        }
+        svFrame.displayInfo();
+        svFrame.setVisible(true);
+        svFrame.setMaSV(maSV);
+    }//GEN-LAST:event_btnThongTinActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        SinhVien_Diem diemFrame = new SinhVien_Diem();
+        diemFrame.setVisible(true);
+        diemFrame.setMaSV(maSV);
+    }//GEN-LAST:event_btnDiemActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnTKBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+        SinhVien_ThoiKhoaBieu tkbFrame = new SinhVien_ThoiKhoaBieu();
+        tkbFrame.setMaSV(maSV);
+        tkbFrame.setVisible(true);
+    }//GEN-LAST:event_btnTKBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,9 +235,9 @@ public class SinhVien_MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnDiem;
+    private javax.swing.JButton btnTKB;
+    private javax.swing.JButton btnThongTin;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -5,6 +5,7 @@
 package quanlydiem_doanck;
 import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
 import java.sql.*;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 /**
  *
@@ -18,7 +19,7 @@ public class DangNhapForm extends javax.swing.JFrame {
     public DangNhapForm() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -170,7 +171,52 @@ public class DangNhapForm extends javax.swing.JFrame {
     }//GEN-LAST:event_closeBtnActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        
+        String username = usernameBox.getText();
+        String password = passwordBox.getText();
+        String role = "";
+        try {
+            Connection sqlConnect = null;
+            sqlConnect = SQLServerConnection.getSQLServerConnection();
+            String SQlQuery = "SELECT VaiTro FROM ACCOUNT WHERE TaiKhoan = ? AND MatKhau = ?";
+            SQLServerPreparedStatement ps = (SQLServerPreparedStatement)sqlConnect.prepareStatement(SQlQuery);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            if (usernameBox.getText().equals("") && passwordBox.getText().equals(""))
+            {
+                JOptionPane.showMessageDialog(this, "Tai khoan va mat khau khong dc de trong","Error",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            ResultSet res = ps.executeQuery();
+            if (res.next())
+            {
+                role = res.getString("VaiTro");
+                switch (role) {
+                    case "sv":
+                        SinhVien_MainFrame svFrame = new SinhVien_MainFrame();
+                        svFrame.setVisible(true);
+                        svFrame.setMaSV(usernameBox.getText());
+                        this.setVisible(false);
+                        break;
+                    case "gv":
+                        new GiangVien_MainFrame().setVisible(true);
+                        this.dispose();
+                        break;
+                    case "bgh":
+                        new BGH_MainFrame().setVisible(true);
+                        this.dispose();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else 
+            {
+                JOptionPane.showMessageDialog(this, "Tai khoan hoac mat khau chua dung","Error",JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void usernameBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameBoxActionPerformed

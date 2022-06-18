@@ -4,6 +4,12 @@
  */
 package quanlydiem_doanck;
 
+import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ASUS
@@ -11,8 +17,184 @@ package quanlydiem_doanck;
 public class SinhVien_ThongTin extends javax.swing.JFrame {
 
     /**
-     * Creates new form SinhVien_ThongTin
+     * @return the anhSV
      */
+    public String getAnhSV() {
+        return anhSV;
+    }
+
+    /**
+     * @param anhSV the anhSV to set
+     */
+    public void setAnhSV(String anhSV) {
+        this.anhSV = anhSV;
+    }
+
+    /**
+     * @return the tenSV
+     */
+    public String getTenSV() {
+        return tenSV;
+    }
+
+    /**
+     * @param tenSV the tenSV to set
+     */
+    public void setTenSV(String tenSV) {
+        this.tenSV = tenSV;
+    }
+
+    /**
+     * @return the khoaSV
+     */
+    public String getKhoaSV() {
+        return khoaSV;
+    }
+
+    /**
+     * @param khoaSV the khoaSV to set
+     */
+    public void setKhoaSV(String khoaSV) {
+        this.khoaSV = khoaSV;
+    }
+
+    /**
+     * @return the lopSV
+     */
+    public String getLopSV() {
+        return lopSV;
+    }
+
+    /**
+     * @param lopSV the lopSV to set
+     */
+    public void setLopSV(String lopSV) {
+        this.lopSV = lopSV;
+    }
+
+    /**
+     * @return the nganhSV
+     */
+    public String getNganhSV() {
+        return nganhSV;
+    }
+
+    /**
+     * @param nganhSV the nganhSV to set
+     */
+    public void setNganhSV(String nganhSV) {
+        this.nganhSV = nganhSV;
+    }
+
+    /**
+     * @return the ngSinhSV
+     */
+    public String getNgSinhSV() {
+        return ngSinhSV;
+    }
+
+    /**
+     * @param ngSinhSV the ngSinhSV to set
+     */
+    public void setNgSinhSV(String ngSinhSV) {
+        this.ngSinhSV = ngSinhSV;
+    }
+
+    /**
+     * @return the gioiTinhSV
+     */
+    public String getGioiTinhSV() {
+        return gioiTinhSV;
+    }
+
+    /**
+     * @param gioiTinhSV the gioiTinhSV to set
+     */
+    public void setGioiTinhSV(String gioiTinhSV) {
+        this.gioiTinhSV = gioiTinhSV;
+    }
+
+    /**
+     * @return the sdtSV
+     */
+    public String getSdtSV() {
+        return sdtSV;
+    }
+
+    /**
+     * @param sdtSV the sdtSV to set
+     */
+    public void setSdtSV(String sdtSV) {
+        this.sdtSV = sdtSV;
+    }
+
+    /**
+     * @return the diaChiSV
+     */
+    public String getDiaChiSV() {
+        return diaChiSV;
+    }
+
+    /**
+     * @param diaChiSV the diaChiSV to set
+     */
+    public void setDiaChiSV(String diaChiSV) {
+        this.diaChiSV = diaChiSV;
+    }
+
+    /**
+     * @return the maSV
+     */
+    public String getMaSV() {
+        return maSV;
+    }
+
+    /**
+     * @param maSV the maSV to set
+     */
+    public void setMaSV(String maSV) {
+        this.maSV = maSV;
+    }
+
+    /**
+     * Creates new form SinhVien_ThongTin
+     * @param e
+     */
+    private String maSV = "";
+    private String tenSV = "";
+    private String khoaSV = "";
+    private String lopSV = "";
+    private String nganhSV = "";
+    private String ngSinhSV = "";
+    private String gioiTinhSV = "";
+    private String sdtSV = "";
+    private String diaChiSV = "";
+    private String anhSV = "";
+    public void setValueofSV(String ma, String ten, String khoa, String lop, String nganh, String ngaysinh, String gioitinh, String sodt, String diachi, String anh)
+    {
+        setMaSV(ma);
+        setTenSV(ten);
+        setKhoaSV(khoa);
+        setLopSV(lop);
+        setNganhSV(nganh);
+        setNgSinhSV(ngaysinh);
+        setGioiTinhSV(gioitinh);
+        setSdtSV(sodt);
+        setDiaChiSV(diachi);
+        setAnhSV(anh);
+    }
+    public void displayInfo()
+    {
+        MSSVtxt.setText(this.maSV);
+        tenSVtxt.setText(this.tenSV);
+        khoaSVtxt.setText(this.khoaSV);
+        lopSVtxt.setText(this.lopSV);
+        nganhSvtxt.setText(this.nganhSV);
+        ngSinhSVtxt.setText(this.ngSinhSV);
+        gioiTinhSVtxt.setText(this.gioiTinhSV);
+        sdtSVtxt.setText(this.sdtSV);
+        diaChiSVtxt.setText(this.diaChiSV);
+    }
     public SinhVien_ThongTin() {
         initComponents();
     }
@@ -28,6 +210,7 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -80,7 +263,7 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
         jLabel4.setText("TÊN: ");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("KHÓA: ");
+        jLabel5.setText("KHOA: ");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("LỚP: ");
@@ -105,6 +288,16 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
 
         MSSVtxt.setBackground(new java.awt.Color(224, 240, 255));
         MSSVtxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        MSSVtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MSSVtxtActionPerformed(evt);
+            }
+        });
+        MSSVtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MSSVtxtKeyPressed(evt);
+            }
+        });
 
         tenSVtxt.setBackground(new java.awt.Color(224, 240, 255));
         tenSVtxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -223,23 +416,48 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MSSVtxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MSSVtxtKeyPressed
+        
+    }//GEN-LAST:event_MSSVtxtKeyPressed
+
+    private void MSSVtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MSSVtxtActionPerformed
+        
+    }//GEN-LAST:event_MSSVtxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,6 +511,7 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField khoaSVtxt;
     private javax.swing.JTextField lopSVtxt;
     private javax.swing.JTextField ngSinhSVtxt;

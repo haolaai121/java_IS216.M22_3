@@ -4,6 +4,11 @@
  */
 package quanlydiem_doanck;
 
+import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS
@@ -11,10 +16,65 @@ package quanlydiem_doanck;
 public class SinhVien_Diem extends javax.swing.JFrame {
 
     /**
+     * @return the hocKy
+     */
+    public String getHocKy() {
+        return hocKy;
+    }
+
+    /**
+     * @param hocKy the hocKy to set
+     */
+    public void setHocKy(String hocKy) {
+        this.hocKy = hocKy;
+    }
+
+    /**
+     * @return the maSV
+     */
+    public String getMaSV() {
+        return maSV;
+    }
+
+    /**
+     * @param maSV the maSV to set
+     */
+    public void setMaSV(String maSV) {
+        this.maSV = maSV;
+    }
+
+    /**
      * Creates new form SinhVien_Diem
      */
+    private String maSV = "";
+    private String hocKy = "";
+    String[] row = null;
+    DefaultTableModel dtm = null;
+    public void getInfo(String maMH, float qt,float th, float gk, float ck, float tb)
+    {
+        row = new String[6];
+        row[0] = maMH;
+        row[1] = Float.toString(qt);
+        row[2] = Float.toString(th);
+        row[3] = Float.toString(gk);
+        row[4] = Float.toString(ck);
+        row[5] = Float.toString(tb);
+    }
+    public void displayInfo()
+    {
+        dtm.addRow(row);
+    }
     public SinhVien_Diem() {
         initComponents();
+        HocKycbBox.addItem("1");
+        HocKycbBox.addItem("2");
+    }
+    public void setTableModel()
+    {
+        dtm = new DefaultTableModel();
+        String tieude[] = {"Mã môn học","Điểm quá trình","Điểm thực hành","Điểm giữa kỳ","Điểm cuối kỳ","Điểm trung bình"};
+        dtm.setColumnIdentifiers(tieude);
+        DiemSVtable.setModel(dtm);
     }
 
     /**
@@ -34,6 +94,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
         DiemSVtable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         HocKycbBox = new javax.swing.JComboBox<>();
+        btnXem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,31 +138,56 @@ public class SinhVien_Diem extends javax.swing.JFrame {
         jLabel2.setText("Chọn học kỳ: ");
 
         HocKycbBox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        HocKycbBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                HocKycbBoxItemStateChanged(evt);
+            }
+        });
+        HocKycbBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HocKycbBoxActionPerformed(evt);
+            }
+        });
+
+        btnXem.setBackground(new java.awt.Color(0, 153, 255));
+        btnXem.setText("Xem");
+        btnXem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXemActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(HocKycbBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(HocKycbBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(btnXem)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(HocKycbBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(HocKycbBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
-                .addGap(58, 58, 58))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnXem)
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -135,6 +221,74 @@ public class SinhVien_Diem extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void HocKycbBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HocKycbBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HocKycbBoxActionPerformed
+
+    private void HocKycbBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_HocKycbBoxItemStateChanged
+        // TODO add your handling code here:
+//        try 
+//        {
+//            Connection sqlConnect = null;
+//            sqlConnect = SQLServerConnection.getSQLServerConnection();
+//            String sqlQuery = "SELECT * FROM DiemSo WHERE MaSV = ? AND HocKy = ?";
+//            SQLServerPreparedStatement ps = (SQLServerPreparedStatement)sqlConnect.prepareStatement(sqlQuery);
+//            ps.setString(1,maSV);
+//            ps.setString(2, this.getHocKy());
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next())
+//            {
+//                this.getInfo
+//                ( 
+//                        rs.getString("MaMH"),
+//                        rs.getFloat("DiemQT"), 
+//                        rs.getFloat("DiemTH"), 
+//                        rs.getFloat("DiemGK"), 
+//                        rs.getFloat("DiemCK"),
+//                        rs.getFloat("DiemTB")
+//                );
+//                this.displayInfo();
+//            }
+//        }
+//        catch (Exception ex)
+//        {
+//            
+//        }
+    }//GEN-LAST:event_HocKycbBoxItemStateChanged
+
+    private void btnXemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemActionPerformed
+        // TODO add your handling code here:
+        setHocKy((String)HocKycbBox.getSelectedItem());
+        setTableModel();
+        try 
+        {
+            Connection sqlConnect = null;
+            sqlConnect = SQLServerConnection.getSQLServerConnection();
+            String sqlQuery = "SELECT * FROM DiemSo WHERE MaSV = ? AND HocKy = ?";
+            SQLServerPreparedStatement ps = (SQLServerPreparedStatement)sqlConnect.prepareStatement(sqlQuery);
+            ps.setString(1,maSV);
+            ps.setString(2, this.getHocKy());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+            {
+                this.getInfo
+                ( 
+                        rs.getString("MaMH"),
+                        rs.getFloat("DiemQT"), 
+                        rs.getFloat("DiemTH"), 
+                        rs.getFloat("DiemGK"), 
+                        rs.getFloat("DiemCK"),
+                        rs.getFloat("DiemTB")
+                );
+                this.displayInfo();
+            }
+        }
+        catch (Exception ex)
+        {
+            
+        }
+    }//GEN-LAST:event_btnXemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +328,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DiemSVtable;
     private javax.swing.JComboBox<String> HocKycbBox;
+    private javax.swing.JButton btnXem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
