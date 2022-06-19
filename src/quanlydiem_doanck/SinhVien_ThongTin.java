@@ -221,7 +221,6 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         MSSVtxt = new javax.swing.JTextField();
         tenSVtxt = new javax.swing.JTextField();
         khoaSVtxt = new javax.swing.JTextField();
@@ -231,6 +230,7 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
         gioiTinhSVtxt = new javax.swing.JTextField();
         sdtSVtxt = new javax.swing.JTextField();
         diaChiSVtxt = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -283,9 +283,6 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setText("ĐỊA CHỈ:");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("ẢNH:");
-
         MSSVtxt.setBackground(new java.awt.Color(224, 240, 255));
         MSSVtxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         MSSVtxt.addActionListener(new java.awt.event.ActionListener() {
@@ -322,6 +319,14 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
 
         diaChiSVtxt.setBackground(new java.awt.Color(224, 240, 255));
         diaChiSVtxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jButton1.setBackground(new java.awt.Color(99, 172, 229));
+        jButton1.setText("Xuất Thông Tin Chi Tiết");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -367,9 +372,12 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(diaChiSVtxt))
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(diaChiSVtxt)))
                         .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -411,9 +419,9 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(diaChiSVtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jLabel12)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -459,6 +467,11 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MSSVtxtActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -498,10 +511,10 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
     private javax.swing.JTextField MSSVtxt;
     private javax.swing.JTextField diaChiSVtxt;
     private javax.swing.JTextField gioiTinhSVtxt;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
