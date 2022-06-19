@@ -72,6 +72,12 @@ CREATE TABLE TKBMH
 	MaGV varchar(5)
 	PRIMARY KEY(MaMH,TenMH,NgayHoc)
 )
+CREATE TABLE ACCOUNT
+(
+	TaiKhoan varchar(20) PRIMARY KEY,
+	MatKhau varchar(15),
+	VaiTro varchar(10)
+)
 ---------------THÊM DỮ LIỆU------------------
 --MÔN HỌC
 INSERT INTO MonHoc (MaMH,TenMH,SoTC) VALUES ('MH01','Môn Học 01','1');
@@ -178,6 +184,30 @@ INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH09','Môn Học 09','Th�
 INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH04','Môn Học 04','Thứ 2','GV011');
 INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH011','Môn Học 11','Thứ 5','GV04');
 INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH01','Môn Học 01','Thứ 3','GV03');
+--Tai Khoan
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV01','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV02','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV03','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV04','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV05','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV06','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV07','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV08','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV09','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV10','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV11','123','sv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV01','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV02','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV03','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV04','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV05','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV06','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV07','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV08','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV09','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV10','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('GV11','123','gv');
+INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('BGH01','123','bgh');
 ---------------THÊM KHÓA NGOẠI---------------
 --GIÁO VIÊN--
 ALTER TABLE GiaoVien ADD CONSTRAINT FK_MHGV FOREIGN KEY (MonPT) REFERENCES MonHoc(MaMH);
@@ -201,3 +231,4 @@ ALTER TABLE Nganh ADD CONSTRAINT FK_NGANHKHOA FOREIGN KEY (MaKhoa) REFERENCES Kh
 --Thoi khoa bieu
 ALTER TABLE TKBMH ADD CONSTRAINT FK_MH FOREIGN KEY (MaMH) REFERENCES MonHoc(MaMH);
 ALTER TABLE TKBMH ADD CONSTRAINT FK_GV FOREIGN KEY (MaMH) REFERENCES GiaoVien(MaGV);
+
