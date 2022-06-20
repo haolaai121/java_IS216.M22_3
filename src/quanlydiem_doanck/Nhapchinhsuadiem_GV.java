@@ -111,6 +111,11 @@ public class Nhapchinhsuadiem_GV extends javax.swing.JFrame {
         jLabel9.setText("Lớp");
 
         btTim.setText("Tìm");
+        btTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimActionPerformed(evt);
+            }
+        });
 
         btThoat.setText("Thoát");
         btThoat.addActionListener(new java.awt.event.ActionListener() {
@@ -263,6 +268,10 @@ public class Nhapchinhsuadiem_GV extends javax.swing.JFrame {
     private void btThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThoatActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btThoatActionPerformed
+
+    private void btTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btTimActionPerformed
 
     /**
      * @param args the command line arguments

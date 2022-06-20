@@ -198,12 +198,14 @@ public class DangNhapForm extends javax.swing.JFrame {
                         this.setVisible(false);
                         break;
                     case "gv":
-                        new GiangVien_MainFrame().setVisible(true);
+                        GiangVien_MainFrame gvFrame = new GiangVien_MainFrame();
+                        gvFrame.setVisible(true);
+                        gvFrame.setMaGV(usernameBox.getText());
                         this.dispose();
                         break;
                     case "bgh":
-                        new BGH_MainFrame().setVisible(true);
-                        this.dispose();
+                        BGH_MainFrame bghFrame = new BGH_MainFrame();
+                        bghFrame.setVisible(true);
                         break;
                     default:
                         break;

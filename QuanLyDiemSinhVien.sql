@@ -14,8 +14,8 @@ CREATE TABLE GiaoVien
 (
 	MaGV varchar(5) PRIMARY KEY,
 	TenGV varchar(30),
-	MonPT varchar(5), --sửa thành môn phụ trách cho tường minh
-	LopPT varchar(8), --sửa thành lớp phụ trách cho tường minh
+	MonPT varchar(5),
+	LopPT varchar(8), 
 	MaKhoa varchar(10)
 )
 
@@ -80,9 +80,8 @@ CREATE TABLE CTLOPDAY
 (
 	MaGV varchar(5) , 
 	MaMH varchar(5) 
-	CONSTRAINT PK_CTLD PRIMARY KEY(MaGV,MaMH)
 )
-
+--CTLOPDAY
 INSERT INTO CTLOPDAY (MaGV,MaMH) VALUES ('GV01','MH01');
 INSERT INTO CTLOPDAY (MaGV,MaMH) VALUES ('GV01','MH02');
 INSERT INTO CTLOPDAY (MaGV,MaMH) VALUES ('GV01','MH03');
@@ -93,8 +92,6 @@ INSERT INTO CTLOPDAY (MaGV,MaMH) VALUES ('GV02','MH02');
 INSERT INTO CTLOPDAY (MaGV,MaMH) VALUES ('GV02','MH03');
 INSERT INTO CTLOPDAY (MaGV,MaMH) VALUES ('GV02','MH05');
 INSERT INTO CTLOPDAY (MaGV,MaMH) VALUES ('GV02','MH07');
-
-
 INSERT INTO CTLOPDAY (MaGV, MaMH) VALUES ('GV04','MH06');
 INSERT INTO CTLOPDAY (MaGV, MaMH) VALUES ('GV04','MH07');
 INSERT INTO CTLOPDAY (MaGV, MaMH) VALUES ('GV04','MH08');
@@ -130,9 +127,6 @@ INSERT INTO CTLOPDAY (MaGV, MaMH) VALUES ('GV10','MH02');
 INSERT INTO CTLOPDAY (MaGV, MaMH) VALUES ('GV11','MH02');
 INSERT INTO CTLOPDAY (MaGV, MaMH) VALUES ('GV11','MH03');
 INSERT INTO CTLOPDAY (MaGV, MaMH) VALUES ('GV10','MH03');
-
-
----------------THÊM DỮ LIỆU------------------
 --MÔN HỌC
 INSERT INTO MonHoc (MaMH,TenMH,SoTC) VALUES ('MH01','Môn Học 01','1');
 INSERT INTO MonHoc (MaMH,TenMH,SoTC) VALUES ('MH02','Môn Học 02','3');
@@ -205,10 +199,13 @@ INSERT INTO Nganh (MaNganh,TenNganh,MaKhoa) VALUES ('NH02','Ngành 2','KH03');
 INSERT INTO Nganh (MaNganh,TenNganh,MaKhoa) VALUES ('NH03','Ngành 3','KH02');
 INSERT INTO Nganh (MaNganh,TenNganh,MaKhoa) VALUES ('NH04','Ngành 4','KH04');
 --Lớp Học
-INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH01','Lớp Học 1','GV01','NK1');
-INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH02','Lớp Học 2','GV09','NK2');
-INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH03','Lớp Học 3','GV07','NK1');
-INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH04','Lớp Học 4','GV04','NK1');
+DELETE FROM LOP;
+INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH01','KH01','GV01','NK1');
+INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH02','KH02','GV09','NK2');
+INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH03','KH03','GV07','NK1');
+INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH04','KH04','GV04','NK1');
+INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH05','KH01','GV05','NK1');
+INSERT INTO LOP (MaLop,MaKhoa,CVHT,NienKhoa) VALUES ('LH06','KH03','GV03','NK2');
 --TKBMH
 INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH08','Môn Học 08','Thứ 2','GV03');
 INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH02','Môn Học 02','Thứ 2','GV01');
@@ -238,15 +235,7 @@ INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH09','Môn Học 09','Th�
 INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH04','Môn Học 04','Thứ 2','GV011');
 INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH011','Môn Học 11','Thứ 5','GV04');
 INSERT INTO TKBMH (MaMH,TenMH,NgayHoc,MaGV) VALUES ('MH01','Môn Học 01','Thứ 3','GV03');
----------------THÊM KHÓA NGOẠI---------------
-
-CREATE TABLE ACCOUNT
-(
-	TaiKhoan varchar(20) PRIMARY KEY,
-	MatKhau varchar(15),
-	VaiTro varchar(10)
-)
-
+--Tài khoản
 INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV01','123','sv');
 INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV02','123','sv');
 INSERT INTO ACCOUNT (TaiKhoan,MatKhau,VaiTro) VALUES ('SV03','123','sv');
