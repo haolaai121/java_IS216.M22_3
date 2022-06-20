@@ -4,11 +4,17 @@
  */
 package quanlydiem_doanck;
 
-import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
+
 import java.sql.*;
-import javax.swing.JOptionPane;
+import java.util.HashMap;
+
+import net.sf.jasperreports.engine.*; 
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import javax.servlet.ServletOutputStream;
+import net.sf.jasperreports.view.JasperViewer;
+import org.apache.commons.collections.map.HashedMap;
 
 /**
  *
@@ -230,7 +236,7 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
         gioiTinhSVtxt = new javax.swing.JTextField();
         sdtSVtxt = new javax.swing.JTextField();
         diaChiSVtxt = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnPrintTT = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -320,11 +326,11 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
         diaChiSVtxt.setBackground(new java.awt.Color(224, 240, 255));
         diaChiSVtxt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(99, 172, 229));
-        jButton1.setText("Xuất Thông Tin Chi Tiết");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnPrintTT.setBackground(new java.awt.Color(99, 172, 229));
+        btnPrintTT.setText("Xuất Thông Tin Chi Tiết");
+        btnPrintTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnPrintTTActionPerformed(evt);
             }
         });
 
@@ -377,7 +383,7 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(114, 114, 114)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPrintTT, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -420,8 +426,8 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(diaChiSVtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addComponent(btnPrintTT, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -467,10 +473,23 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MSSVtxtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPrintTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintTTActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        try
+        {
+            HashMap param = new HashMap();
+            param.put("MSSV", MSSVtxt.getText());
+            
+            String localDir = System.getProperty("user.dir");
+            
+            ReportViewer viewer = new ReportViewer(localDir + "\\src\\quanlydiem_doanck\\report_ThongTinSinhVien.jrxml",param);
+            viewer.setVisible(true);
+        }
+        catch (Exception e)
+        {
+            
+        }
+    }//GEN-LAST:event_btnPrintTTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -509,9 +528,9 @@ public class SinhVien_ThongTin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField MSSVtxt;
+    private javax.swing.JButton btnPrintTT;
     private javax.swing.JTextField diaChiSVtxt;
     private javax.swing.JTextField gioiTinhSVtxt;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

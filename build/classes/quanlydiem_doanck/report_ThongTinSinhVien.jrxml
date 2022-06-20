@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d2c36f17-0c66-4c1e-83ef-a1bcc72920ce">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d2c36f17-0c66-4c1e-83ef-a1bcc72920ce">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="MSSV" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT SV.MaSV, SV.TenSV,K.TenKhoa, L.MaLop, N.TenNganh, NgaySinh, GioiTinh,SoDT, DiaChi FROM (SinhVien SV JOIN Khoa K ON SV.MaKhoa = K.MaKhoa) JOIN LOP L ON SV.MaLop = L.MaLop JOIN Nganh N ON SV.MaNganh = N.MaNganh WHERE SV.MaSV = 'SV01';
-
-]]>
+		<![CDATA[SELECT SV.MaSV, SV.TenSV,K.TenKhoa, L.MaLop, N.TenNganh, NgaySinh, GioiTinh,SoDT, DiaChi FROM (SinhVien SV JOIN Khoa K ON SV.MaKhoa = K.MaKhoa) JOIN LOP L ON SV.MaLop = L.MaLop JOIN Nganh N ON SV.MaNganh = N.MaNganh WHERE SV.MaSV = $P{MSSV};]]>
 	</queryString>
 	<field name="MaSV" class="java.lang.String"/>
 	<field name="TenSV" class="java.lang.String"/>
@@ -46,7 +45,7 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="125" splitType="Stretch">
+		<band height="111" splitType="Stretch">
 			<textField>
 				<reportElement x="100" y="31" width="100" height="20" uuid="f0202ffc-e9a4-409b-8f02-030ba1461713"/>
 				<textFieldExpression><![CDATA[$F{MaSV}]]></textFieldExpression>
@@ -89,7 +88,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="118" splitType="Stretch">
+		<band height="113" splitType="Stretch">
 			<textField>
 				<reportElement x="100" y="33" width="100" height="20" uuid="ea033f49-0dea-4060-8be9-665e451146cc"/>
 				<textFieldExpression><![CDATA[$F{NgaySinh}]]></textFieldExpression>
@@ -142,8 +141,8 @@
 			<staticText>
 				<reportElement x="0" y="0" width="555" height="64" uuid="85ba4a84-cf66-4141-b139-76af426de8d4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Sinh Viên Trường Đại Học ABC
-Đại Học Quốc Gia XYZ]]></text>
+				<text><![CDATA[Sinh Viên Trường Đại Học CNTT
+Đại Học Quốc Gia TPHCM]]></text>
 			</staticText>
 		</band>
 	</summary>

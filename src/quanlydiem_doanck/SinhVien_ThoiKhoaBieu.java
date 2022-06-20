@@ -46,7 +46,7 @@ public class SinhVien_ThoiKhoaBieu extends javax.swing.JFrame {
     public void setTableModel()
     {
         dtm = new DefaultTableModel();
-        String tieude[] = {"Thu 2","Thu 3","Thu 5","Thu 6","Thu 7"};
+        String tieude[] = {"Tiet","Thu 2","Thu 3","Thu 5","Thu 6","Thu 7"};
         dtm.setColumnIdentifiers(tieude);
         tkbTable.setModel(dtm);
     }
@@ -62,32 +62,32 @@ public class SinhVien_ThoiKhoaBieu extends javax.swing.JFrame {
             {
                 case "Thu 2":
                 {
-                    tiet1[0] = maMH;
+                    tiet1[1] = maMH;
                     break;
                 }
                 case "Thu 3":
                 {
-                    tiet1[1] = maMH;
+                    tiet1[2] = maMH;
                     break;
                 }
                 case "Thu 4":
                 {
-                    tiet1[2] = maMH;
+                    tiet1[3] = maMH;
                     break;
                 }
                 case "Thu 5":
                 {
-                    tiet1[3] = maMH;
+                    tiet1[4] = maMH;
                     break;
                 }
                 case "Thu 6":
                 {
-                    tiet1[4] = maMH;
+                    tiet1[5] = maMH;
                     break;
                 }
                 case "Thu 7":
                 {
-                    tiet1[5] = maMH;
+                    tiet1[6] = maMH;
                     break;
                 }
             }
@@ -101,32 +101,32 @@ public class SinhVien_ThoiKhoaBieu extends javax.swing.JFrame {
             {
                 case "Thu 2":
                 {
-                    tiet2[0] = maMH;
+                    tiet2[1] = maMH;
                     break;
                 }
                 case "Thu 3":
                 {
-                    tiet2[1] = maMH;
+                    tiet2[2] = maMH;
                     break;
                 }
                 case "Thu 4":
                 {
-                    tiet2[2] = maMH;
+                    tiet2[3] = maMH;
                     break;
                 }
                 case "Thu 5":
                 {
-                    tiet2[3] = maMH;
+                    tiet2[4] = maMH;
                     break;
                 }
                 case "Thu 6":
                 {
-                    tiet2[4] = maMH;
+                    tiet2[5] = maMH;
                     break;
                 }
                 case "Thu 7":
                 {
-                    tiet2[5] = maMH;
+                    tiet2[6] = maMH;
                     break;
                 }
             }
@@ -140,32 +140,32 @@ public class SinhVien_ThoiKhoaBieu extends javax.swing.JFrame {
             {
                 case "Thu 2":
                 {
-                    tiet3[0] = maMH;
+                    tiet3[1] = maMH;
                     break;
                 }
                 case "Thu 3":
                 {
-                    tiet3[1] = maMH;
+                    tiet3[2] = maMH;
                     break;
                 }
                 case "Thu 4":
                 {
-                    tiet3[2] = maMH;
+                    tiet3[3] = maMH;
                     break;
                 }
                 case "Thu 5":
                 {
-                    tiet3[3] = maMH;
+                    tiet3[4] = maMH;
                     break;
                 }
                 case "Thu 6":
                 {
-                    tiet3[4] = maMH;
+                    tiet3[5] = maMH;
                     break;
                 }
                 case "Thu 7":
                 {
-                    tiet3[5] = maMH;
+                    tiet3[6] = maMH;
                     break;
                 }
             }
@@ -179,32 +179,32 @@ public class SinhVien_ThoiKhoaBieu extends javax.swing.JFrame {
             {
                 case "Thu 2":
                 {
-                    tiet4[0] = maMH;
+                    tiet4[1] = maMH;
                     break;
                 }
                 case "Thu 3":
                 {
-                    tiet4[1] = maMH;
+                    tiet4[2] = maMH;
                     break;
                 }
                 case "Thu 4":
                 {
-                    tiet4[2] = maMH;
+                    tiet4[3] = maMH;
                     break;
                 }
                 case "Thu 5":
                 {
-                    tiet4[3] = maMH;
+                    tiet4[4] = maMH;
                     break;
                 }
                 case "Thu 6":
                 {
-                    tiet4[4] = maMH;
+                    tiet4[5] = maMH;
                     break;
                 }
                 case "Thu 7":
                 {
-                    tiet4[5] = maMH;
+                    tiet4[6] = maMH;
                     break;
                 }
             }
@@ -218,32 +218,32 @@ public class SinhVien_ThoiKhoaBieu extends javax.swing.JFrame {
             {
                 case "Thu 2":
                 {
-                    tiet5[0] = maMH;
+                    tiet5[1] = maMH;
                     break;
                 }
                 case "Thu 3":
                 {
-                    tiet5[1] = maMH;
+                    tiet5[2] = maMH;
                     break;
                 }
                 case "Thu 4":
                 {
-                    tiet5[2] = maMH;
+                    tiet5[3] = maMH;
                     break;
                 }
                 case "Thu 5":
                 {
-                    tiet5[3] = maMH;
+                    tiet5[4] = maMH;
                     break;
                 }
                 case "Thu 6":
                 {
-                    tiet5[4] = maMH;
+                    tiet5[5] = maMH;
                     break;
                 }
                 case "Thu 7":
                 {
-                    tiet5[5] = maMH;
+                    tiet5[6] = maMH;
                     break;
                 }
             }
@@ -381,7 +381,7 @@ public class SinhVien_ThoiKhoaBieu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(HocKycbBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnXem, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnXem, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -419,11 +419,16 @@ public class SinhVien_ThoiKhoaBieu extends javax.swing.JFrame {
 
     private void btnXemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemActionPerformed
         // TODO add your handling code here:
-        tiet1 = new String[6];
-        tiet2 = new String[6];
-        tiet3 = new String[6];
-        tiet4 = new String[6];
-        tiet5 = new String[6];
+        tiet1 = new String[7];
+        tiet1[0] = "1";
+        tiet2 = new String[7];
+        tiet2[0] = "2";
+        tiet3 = new String[7];
+        tiet3[0] = "3";
+        tiet4 = new String[7];
+        tiet4[0] = "4";
+        tiet5 = new String[7];
+        tiet5[0] = "5";
         setTableModel();
         getTKB();
     }//GEN-LAST:event_btnXemActionPerformed

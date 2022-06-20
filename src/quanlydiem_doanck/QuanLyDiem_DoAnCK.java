@@ -15,6 +15,8 @@ public class QuanLyDiem_DoAnCK {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        DangNhapForm dnForm = new DangNhapForm();
+        dnForm.setVisible(true);
     }
     
 }

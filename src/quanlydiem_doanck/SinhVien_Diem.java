@@ -7,6 +7,8 @@ package quanlydiem_doanck;
 import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -50,6 +52,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
     private String hocKy = "";
     String[] row = null;
     DefaultTableModel dtm = null;
+    private int flag = 0;
     public void getInfo(String maMH, float qt,float th, float gk, float ck, float tb)
     {
         row = new String[6];
@@ -95,6 +98,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         HocKycbBox = new javax.swing.JComboBox<>();
         btnXem = new javax.swing.JButton();
+        btnPrintDiem = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,23 +161,34 @@ public class SinhVien_Diem extends javax.swing.JFrame {
             }
         });
 
+        btnPrintDiem.setBackground(new java.awt.Color(0, 153, 255));
+        btnPrintDiem.setText("Xuất bản điểm chi tiết");
+        btnPrintDiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintDiemActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(HocKycbBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(HocKycbBox, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnXem))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(215, 215, 215)
-                        .addComponent(btnXem)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(187, 187, 187)
+                .addComponent(btnPrintDiem)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -182,12 +197,14 @@ public class SinhVien_Diem extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(HocKycbBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(HocKycbBox, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnXem)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnXem)
-                .addGap(21, 21, 21))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnPrintDiem)
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -196,8 +213,8 @@ public class SinhVien_Diem extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +305,33 @@ public class SinhVien_Diem extends javax.swing.JFrame {
         {
             
         }
+        flag = 1;
     }//GEN-LAST:event_btnXemActionPerformed
+
+    private void btnPrintDiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintDiemActionPerformed
+        // TODO add your handling code here:
+        if (flag == 1)
+        {
+            try
+            {
+                HashMap param = new HashMap();
+                param.put("MSSV", maSV);
+                param.put("HK", HocKycbBox.getSelectedItem());
+                String localDir = System.getProperty("user.dir");
+            
+                ReportViewer viewer = new ReportViewer(localDir + "\\src\\quanlydiem_doanck\\report_DiemSoSV.jrxml",param);
+                viewer.setVisible(true);
+            }
+            catch (Exception e)
+            {
+                
+            }
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(this, "Chua co du lieu de hien thi, vui long bam \"Xem\" truoc","Error",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPrintDiemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,6 +371,7 @@ public class SinhVien_Diem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable DiemSVtable;
     private javax.swing.JComboBox<String> HocKycbBox;
+    private javax.swing.JButton btnPrintDiem;
     private javax.swing.JButton btnXem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
