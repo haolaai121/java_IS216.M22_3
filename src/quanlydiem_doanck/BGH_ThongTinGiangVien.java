@@ -330,7 +330,7 @@ public class BGH_ThongTinGiangVien extends javax.swing.JFrame {
                 row[3] = lopptBox.getText();
                 model.addRow(row);
 
-                String SQlQuery = "INSERT INTO [GIAOVIEN] VALUES (?,?,?,?)";
+                String SQlQuery = "INSERT INTO [GIAOVIEN] VALUES (?,?,?,?,?)";
                 Connection con = null;
                 con = SQLServerConnection.getSQLServerConnection();
                 SQLServerPreparedStatement ps = (SQLServerPreparedStatement) con.prepareStatement(SQlQuery);
@@ -338,6 +338,7 @@ public class BGH_ThongTinGiangVien extends javax.swing.JFrame {
                 ps.setString(2, hotenBox.getText());
                 ps.setString(3, lopptBox.getText());
                 ps.setString(4, khoaBox.getText());
+                ps.setString(5, "Mon Hoc Chua Xac Dinh");
 
                 int n = ps.executeUpdate();
 

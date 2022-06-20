@@ -1,5 +1,4 @@
 ﻿CREATE DATABASE QLYDIEMHS
-DROP DATABASE QLYDIEMHS
 GO
 USE QLYDIEMHS
 GO
@@ -14,12 +13,10 @@ CREATE TABLE GiaoVien
 (
 	MaGV varchar(5) PRIMARY KEY,
 	TenGV varchar(30),
+	MonPT varchar(30),
 	LopPT varchar(8), 
 	MaKhoa varchar(10)
 )
-
-
-ALTER TABLE GiaoVien ALTER COLUMN LopPT varchar(10);
 CREATE TABLE Khoa
 (
 	MaKhoa varchar(10) PRIMARY KEY,
