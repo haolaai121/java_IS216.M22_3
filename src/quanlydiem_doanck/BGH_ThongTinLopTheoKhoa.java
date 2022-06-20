@@ -4,6 +4,14 @@
  */
 package quanlydiem_doanck;
 
+import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Admin
@@ -15,6 +23,8 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
      */
     public BGH_ThongTinLopTheoKhoa() {
         initComponents();
+        showKhoa();
+
     }
 
     /**
@@ -31,20 +41,20 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tbthongtin = new javax.swing.JTable();
-        CbLopday = new javax.swing.JComboBox<>();
-        btThoat = new javax.swing.JButton();
+        CbKhoa = new javax.swing.JComboBox<>();
+        btQuaylai = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         malop = new javax.swing.JTextField();
-        tenmon = new javax.swing.JTextField();
+        cvht = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         khoa = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         nienkhoa = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         btTim = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btThem = new javax.swing.JButton();
+        btXoa = new javax.swing.JButton();
         btLuu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,28 +69,26 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
 
         Tbthongtin.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
-                "STT", "MÃ LỚP", "KHOA", "CVHT", "NIÊN KHÓA"
+                "MÃ LỚP", "KHOA", "CVHT", "NIÊN KHÓA"
             }
         ));
-        jScrollPane1.setViewportView(Tbthongtin);
-
-        CbLopday.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        CbLopday.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CbLopdayActionPerformed(evt);
+        Tbthongtin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TbthongtinMouseClicked(evt);
             }
         });
+        jScrollPane1.setViewportView(Tbthongtin);
 
-        btThoat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btThoat.setText("Thoát");
-        btThoat.addActionListener(new java.awt.event.ActionListener() {
+        CbKhoa.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        btQuaylai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btQuaylai.setText("Quay lại ");
+        btQuaylai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btThoatActionPerformed(evt);
+                btQuaylaiActionPerformed(evt);
             }
         });
 
@@ -91,13 +99,8 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
         jLabel3.setText("CVHT");
 
         malop.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        malop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                malopActionPerformed(evt);
-            }
-        });
 
-        tenmon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cvht.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Khoa");
@@ -116,15 +119,35 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
 
         btTim.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btTim.setText("Tìm");
+        btTim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btTimActionPerformed(evt);
+            }
+        });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Thêm");
+        btThem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btThem.setText("Thêm");
+        btThem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThemActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Xóa");
+        btXoa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btXoa.setText("Xóa");
+        btXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaActionPerformed(evt);
+            }
+        });
 
         btLuu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btLuu.setText("Lưu");
+        btLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLuuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,7 +161,7 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(malop, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tenmon, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cvht, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,19 +180,19 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btTim, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btThem, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(47, 47, 47)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(41, 41, 41)
                                 .addComponent(btLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
-                                .addComponent(btThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btQuaylai, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(14, 14, 14)))
                         .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CbLopday, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CbKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -177,7 +200,7 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CbLopday, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CbKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,9 +217,9 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
                         .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btLuu, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btQuaylai, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btXoa, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btThem, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btTim, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -205,7 +228,7 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(tenmon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cvht, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(32, 32, 32))
         );
 
@@ -239,17 +262,206 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void malopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_malopActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_malopActionPerformed
+    public void showKhoa() {
+        ArrayList<String> khoa = new ArrayList();
+        try {
+            Connection con = null;
+            con = SQLServerConnection.getSQLServerConnection();
+            String sql = "SELECT MAKHOA FROM KHOA ";
+            SQLServerPreparedStatement ps = (SQLServerPreparedStatement) con.prepareStatement(sql);
 
-    private void btThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThoatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btThoatActionPerformed
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                khoa.add(rs.getString("MAKHOA"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+        for (String string : khoa) {
+            CbKhoa.addItem(string);
+        }
+    }
 
-    private void CbLopdayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CbLopdayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CbLopdayActionPerformed
+
+    private void btQuaylaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btQuaylaiActionPerformed
+        java.awt.EventQueue.invokeLater(() -> {
+            new BGH_MainFrame().setVisible(true);
+            this.setVisible(false);
+        });
+    }//GEN-LAST:event_btQuaylaiActionPerformed
+
+    private void TbthongtinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TbthongtinMouseClicked
+        DefaultTableModel model = (DefaultTableModel) Tbthongtin.getModel();
+
+        int indexTB = Tbthongtin.getSelectedRow();
+        if (indexTB < model.getRowCount() && indexTB >= 0) {
+            malop.setText(model.getValueAt(indexTB, 0).toString());
+            khoa.setText(model.getValueAt(indexTB, 1).toString());
+            cvht.setText(model.getValueAt(indexTB, 2).toString());
+            nienkhoa.setText(model.getValueAt(indexTB, 3).toString());
+        }
+    }//GEN-LAST:event_TbthongtinMouseClicked
+
+    private void btTimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTimActionPerformed
+        DefaultTableModel model = (DefaultTableModel) Tbthongtin.getModel();
+        String tenkhoa = (String) CbKhoa.getSelectedItem();
+
+        model.setRowCount(0);
+
+        try {
+            Connection con = null;
+            con = SQLServerConnection.getSQLServerConnection();
+
+            String sql = "SELECT * FROM  LOP WHERE MAKHOA = ?";
+            SQLServerPreparedStatement ps = (SQLServerPreparedStatement) con.prepareStatement(sql);
+            ps.setString(1, tenkhoa);
+            ResultSet rs = ps.executeQuery();
+
+            String row[] = new String[4];
+            while (rs.next()) {
+                row[0] = rs.getString("MALOP");
+                row[1] = rs.getString("MAKHOA");
+                row[2] = rs.getString("CVHT");
+                row[3] = rs.getString("NIENKHOA");
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btTimActionPerformed
+
+    private void btThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemActionPerformed
+        DefaultTableModel model = (DefaultTableModel) Tbthongtin.getModel();
+        if (malop.getText().length() > 10) {
+            JOptionPane.showMessageDialog(this, "Mã lớp không được nhiều hơn 10 ký tự!");
+        } else if (khoa.getText().length() > 10) {
+            JOptionPane.showMessageDialog(this, "Mã khoa không nhiều hơn 10 ký tự!");
+        } else if (cvht.getText().length() > 5) {
+            JOptionPane.showMessageDialog(this, "Mã giáo viên không nhiều hơn 5 ký tự!");
+        } else if (nienkhoa.getText().length() > 10) {
+            JOptionPane.showMessageDialog(this, "Niên khóa không nhiều hơn 10 ký tự!");
+        } else if (malop.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập mã lớp!");
+        } else if (khoa.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập mã khoa!");
+        } else if (cvht.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập cố vấn học tập!");
+        } else if (nienkhoa.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập niên khóa!");
+
+        } else {
+            try {
+                String row[] = new String[4];
+                row[0] = malop.getText();
+                row[1] = khoa.getText();
+                row[2] = cvht.getText();
+                row[3] = nienkhoa.getText();
+                model.addRow(row);
+
+                String SQlQuery = "INSERT INTO [LOP] VALUES (?,?,?,?)";
+                Connection con = null;
+                con = SQLServerConnection.getSQLServerConnection();
+                SQLServerPreparedStatement ps = (SQLServerPreparedStatement) con.prepareStatement(SQlQuery);
+                ps.setString(1, malop.getText());
+                ps.setString(2, khoa.getText());
+                ps.setString(3, cvht.getText());
+                ps.setString(4, nienkhoa.getText());
+                int n = ps.executeUpdate();
+
+                if (n != 0) {
+                    JOptionPane.showMessageDialog(this, "Thêm lớp thành công!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Thêm lớp thất bại!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        }
+    }//GEN-LAST:event_btThemActionPerformed
+
+    private void btLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLuuActionPerformed
+        DefaultTableModel model = (DefaultTableModel) Tbthongtin.getModel();
+        
+        int i = Tbthongtin.getSelectedRow();
+        String x = model.getValueAt(i, 0).toString();
+        
+        if (! malop.getText().equals(x)) {
+            JOptionPane.showMessageDialog(this, "Không được thay đổi mã lớp !");
+        } else if (khoa.getText().length() > 10) {
+            JOptionPane.showMessageDialog(this, "Mã khoa không nhiều hơn 10 ký tự!");
+        } else if (cvht.getText().length() > 5) {
+            JOptionPane.showMessageDialog(this, "Mã giáo viên không nhiều hơn 5 ký tự!");
+        } else if (nienkhoa.getText().length() > 10) {
+            JOptionPane.showMessageDialog(this, "Niên khóa không nhiều hơn 10 ký tự!");
+        } else if (khoa.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập mã khoa!");
+        } else if (cvht.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập cố vấn học tập!");
+        } else if (nienkhoa.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập niên khóa!");
+
+        } else {
+            try {
+                String strSQL = "UPDATE LOP SET MAKHOA = ?, CVHT = ?, NIENKHOA = ? WHERE MALOP = ?";
+                Connection con = null;
+                con = SQLServerConnection.getSQLServerConnection();
+                SQLServerPreparedStatement ps = (SQLServerPreparedStatement) con.prepareStatement(strSQL);
+
+                ps.setString(1, khoa.getText());
+                ps.setString(2, cvht.getText());
+                ps.setString(3, nienkhoa.getText());
+                ps.setString(4, malop.getText());
+
+                int indexTB = Tbthongtin.getSelectedRow();
+                if (indexTB < model.getRowCount() && indexTB >= 0) {
+                    model.setValueAt(khoa.getText(), indexTB, 1);
+                    model.setValueAt(cvht.getText(), indexTB, 2);
+                    model.setValueAt(nienkhoa.getText(), indexTB, 3);
+                }
+
+                int n = ps.executeUpdate();
+
+                if (n != 0) {
+                    JOptionPane.showMessageDialog(this, "Lưu thông tin thành công!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        }
+
+    }//GEN-LAST:event_btLuuActionPerformed
+
+    private void btXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaActionPerformed
+        DefaultTableModel model = (DefaultTableModel) Tbthongtin.getModel();
+        int indexTB = Tbthongtin.getSelectedRow();
+        int ret = JOptionPane.showConfirmDialog(this, "Bạn có muốn xóa lớp?", "Xóa dữ liệu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (ret == JOptionPane.YES_OPTION) {
+            if (indexTB < model.getRowCount() && indexTB >= 0) {
+                model.removeRow(indexTB);
+            }
+            String str = "DELETE FROM LOP WHERE MALOP = ?";
+            try {
+                Connection con = null;
+                con = SQLServerConnection.getSQLServerConnection();
+                SQLServerPreparedStatement ps = (SQLServerPreparedStatement) con.prepareStatement(str);
+                ps.setString(1, malop.getText());
+
+                int n = ps.executeUpdate();
+
+                if (n != 0) {
+                    JOptionPane.showMessageDialog(this, "Xóa thông tin thành công!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Đã xảy ra lỗi!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (Exception e) {
+                System.err.println(e);
+            }
+        }
+    }//GEN-LAST:event_btXoaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,16 +477,24 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BGH_ThongTinLopTheoKhoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BGH_ThongTinLopTheoKhoa.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BGH_ThongTinLopTheoKhoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BGH_ThongTinLopTheoKhoa.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BGH_ThongTinLopTheoKhoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BGH_ThongTinLopTheoKhoa.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BGH_ThongTinLopTheoKhoa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BGH_ThongTinLopTheoKhoa.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -350,13 +570,14 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CbLopday;
+    private javax.swing.JComboBox<String> CbKhoa;
     private javax.swing.JTable Tbthongtin;
     private javax.swing.JButton btLuu;
-    private javax.swing.JButton btThoat;
+    private javax.swing.JButton btQuaylai;
+    private javax.swing.JButton btThem;
     private javax.swing.JButton btTim;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btXoa;
+    private javax.swing.JTextField cvht;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -369,6 +590,5 @@ public class BGH_ThongTinLopTheoKhoa extends javax.swing.JFrame {
     private javax.swing.JTextField khoa;
     private javax.swing.JTextField malop;
     private javax.swing.JTextField nienkhoa;
-    private javax.swing.JTextField tenmon;
     // End of variables declaration//GEN-END:variables
 }

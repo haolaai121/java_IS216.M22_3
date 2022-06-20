@@ -29,11 +29,11 @@ public class BGH_MainFrame extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        ttGiengVienBtn = new javax.swing.JButton();
-        ttSinhVienBtn = new javax.swing.JButton();
+        ttGVBtn = new javax.swing.JButton();
+        diemSVbt = new javax.swing.JButton();
         ttKhoaBtn = new javax.swing.JButton();
         ttMonBtn = new javax.swing.JButton();
-        ttSinhVienBtn1 = new javax.swing.JButton();
+        ttSVbt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,25 +59,25 @@ public class BGH_MainFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        ttGiengVienBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ttGiengVienBtn.setText("XEM THÔNG TIN GIẢNG VIÊN");
-        ttGiengVienBtn.setToolTipText("");
-        ttGiengVienBtn.addActionListener(new java.awt.event.ActionListener() {
+        ttGVBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ttGVBtn.setText("XEM THÔNG TIN GIẢNG VIÊN");
+        ttGVBtn.setToolTipText("");
+        ttGVBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ttGiengVienBtnActionPerformed(evt);
+                ttGVBtnActionPerformed(evt);
             }
         });
 
-        ttSinhVienBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ttSinhVienBtn.setText("XEM ĐIỂM SINH VIÊN");
-        ttSinhVienBtn.addActionListener(new java.awt.event.ActionListener() {
+        diemSVbt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        diemSVbt.setText("XEM ĐIỂM SINH VIÊN");
+        diemSVbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ttSinhVienBtnActionPerformed(evt);
+                diemSVbtActionPerformed(evt);
             }
         });
 
         ttKhoaBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ttKhoaBtn.setText("XEM THÔNG TIN LỚP THEO KHOA");
+        ttKhoaBtn.setText("XEM THÔNG TIN LỚP TRONG KHOA");
         ttKhoaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ttKhoaBtnActionPerformed(evt);
@@ -85,18 +85,18 @@ public class BGH_MainFrame extends javax.swing.JFrame {
         });
 
         ttMonBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ttMonBtn.setText("XEM THÔNG TIN  LỚP THEO MÔN");
+        ttMonBtn.setText("XEM THÔNG TIN MÔN HỌC");
         ttMonBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ttMonBtnActionPerformed(evt);
             }
         });
 
-        ttSinhVienBtn1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        ttSinhVienBtn1.setText("XEM THÔNG TIN SINH VIÊN");
-        ttSinhVienBtn1.addActionListener(new java.awt.event.ActionListener() {
+        ttSVbt.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ttSVbt.setText("XEM THÔNG TIN SINH VIÊN");
+        ttSVbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ttSinhVienBtn1ActionPerformed(evt);
+                ttSVbtActionPerformed(evt);
             }
         });
 
@@ -109,25 +109,25 @@ public class BGH_MainFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ttKhoaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ttMonBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ttSinhVienBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ttSinhVienBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ttGiengVienBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ttSVbt, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(diemSVbt, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ttGVBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(ttGiengVienBtn)
+                .addComponent(ttGVBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ttSinhVienBtn)
+                .addComponent(diemSVbt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ttSinhVienBtn1)
+                .addComponent(ttSVbt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ttKhoaBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ttMonBtn)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,25 +148,35 @@ public class BGH_MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ttGiengVienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttGiengVienBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ttGiengVienBtnActionPerformed
+    private void ttGVBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttGVBtnActionPerformed
+        java.awt.EventQueue.invokeLater(() -> {
+            new BGH_ThongTinGiangVien().setVisible(true);
+        });
+    }//GEN-LAST:event_ttGVBtnActionPerformed
 
-    private void ttSinhVienBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttSinhVienBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ttSinhVienBtnActionPerformed
+    private void diemSVbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diemSVbtActionPerformed
+        java.awt.EventQueue.invokeLater(() -> {
+            new BGH_DiemSV().setVisible(true);
+        });
+    }//GEN-LAST:event_diemSVbtActionPerformed
 
     private void ttKhoaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttKhoaBtnActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(() -> {
+            new BGH_ThongTinLopTheoKhoa().setVisible(true);
+        });
     }//GEN-LAST:event_ttKhoaBtnActionPerformed
 
     private void ttMonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttMonBtnActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(() -> {
+            new BGH_ThongTinMH().setVisible(true);
+        });
     }//GEN-LAST:event_ttMonBtnActionPerformed
 
-    private void ttSinhVienBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttSinhVienBtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ttSinhVienBtn1ActionPerformed
+    private void ttSVbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttSVbtActionPerformed
+        java.awt.EventQueue.invokeLater(() -> {
+            new BGH_ThongTinSinhVien().setVisible(true);
+        });
+    }//GEN-LAST:event_ttSVbtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,13 +215,13 @@ public class BGH_MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton diemSVbt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JButton ttGiengVienBtn;
+    private javax.swing.JButton ttGVBtn;
     private javax.swing.JButton ttKhoaBtn;
     private javax.swing.JButton ttMonBtn;
-    private javax.swing.JButton ttSinhVienBtn;
-    private javax.swing.JButton ttSinhVienBtn1;
+    private javax.swing.JButton ttSVbt;
     // End of variables declaration//GEN-END:variables
 }

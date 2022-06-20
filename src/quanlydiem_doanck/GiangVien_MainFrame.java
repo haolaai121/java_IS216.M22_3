@@ -4,12 +4,34 @@
  */
 package quanlydiem_doanck;
 
+import com.microsoft.sqlserver.jdbc.SQLServerPreparedStatement;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /**
  *
  * @author ASUS
  */
 public class GiangVien_MainFrame extends javax.swing.JFrame {
 
+    /**
+     * @return the maSV
+     */
+    public String getMaGV() {
+        return maGV;
+    }
+
+    /**
+     * @param maGV the maSV to set
+     */
+    public void setMaGV(String maGV) {
+        this.maGV = maGV;
+    }
+    
+    private String maGV = "";
+    
     /**
      * Creates new form GiangVien_MainFrame
      */
@@ -136,19 +158,69 @@ public class GiangVien_MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ttGiangVien_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ttGiangVien_BtnActionPerformed
-        // TODO add your handling code here:
+        GiangVien_ThongTinGV gvFrame = new GiangVien_ThongTinGV();
+        try 
+        {
+            Connection conn = null;
+            conn = (Connection) SQLServerConnection.getSQLServerConnection();
+            String sqlQuery = "SELECT * FROM GiaoVien WHERE MaGV = ?";
+            SQLServerPreparedStatement ps;
+            ps = (SQLServerPreparedStatement)conn.prepareStatement(sqlQuery);
+            ps.setString(1,maGV);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next())
+            {
+                gvFrame.setValueofGV
+                (
+                        maGV, 
+                        rs.getString("TenGV"), 
+                        rs.getString("MaKhoa"), 
+                        rs.getString("LopPT"), 
+                        rs.getString("MonPT") 
+                );
+            }
+        }
+        catch (ClassNotFoundException | SQLException ex)
+        {
+        }
+        
+        gvFrame.displayInfo();
+        gvFrame.setVisible(true);
+        gvFrame.setMaGV(maGV);
     }//GEN-LAST:event_ttGiangVien_BtnActionPerformed
 
     private void dsLopCoVanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dsLopCoVanBtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            GiangVien_ThongTinSVLopCV CV = new GiangVien_ThongTinSVLopCV();
+            CV.setVisible(true);
+            CV.setMaGV(maGV);
+        } catch (SQLException | ClassNotFoundException ex) {
+             System.out.println(ex.toString());
+            Logger.getLogger(GiangVien_MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_dsLopCoVanBtnActionPerformed
 
     private void dsLopDayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dsLopDayBtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            GiangVien_ThongTinSVLopDay day = new GiangVien_ThongTinSVLopDay();
+            day.setVisible(true);
+            day.setMaGV(maGV);
+        } catch (SQLException | ClassNotFoundException ex) {
+             System.out.println(ex.toString());
+            Logger.getLogger(GiangVien_MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_dsLopDayBtnActionPerformed
 
     private void GiangViennhapDiem_BtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GiangViennhapDiem_BtnActionPerformed
-        // TODO add your handling code here:
+        try {
+            GiangVien_NhapSuaDiem nhap = new GiangVien_NhapSuaDiem();
+            nhap.setVisible(true);
+            nhap.setMaGV(maGV);
+        } catch (SQLException | ClassNotFoundException ex) {
+             System.out.println(ex.toString());
+            Logger.getLogger(GiangVien_MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_GiangViennhapDiem_BtnActionPerformed
 
     /**
@@ -195,4 +267,6 @@ public class GiangVien_MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton ttGiangVien_Btn;
     // End of variables declaration//GEN-END:variables
+
+    
 }

@@ -88,9 +88,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="ttKhoaBtn" min="-2" pref="267" max="-2" attributes="0"/>
                       <Component id="ttMonBtn" min="-2" pref="267" max="-2" attributes="0"/>
-                      <Component id="ttSinhVienBtn1" alignment="0" min="-2" pref="267" max="-2" attributes="0"/>
-                      <Component id="ttSinhVienBtn" alignment="0" min="-2" pref="267" max="-2" attributes="0"/>
-                      <Component id="ttGiengVienBtn" alignment="0" min="-2" pref="267" max="-2" attributes="0"/>
+                      <Component id="ttSVbt" alignment="0" min="-2" pref="267" max="-2" attributes="0"/>
+                      <Component id="diemSVbt" alignment="0" min="-2" pref="267" max="-2" attributes="0"/>
+                      <Component id="ttGVBtn" alignment="0" min="-2" pref="267" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="62" max="32767" attributes="0"/>
               </Group>
@@ -100,22 +100,22 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="ttGiengVienBtn" min="-2" max="-2" attributes="0"/>
+                  <Component id="ttGVBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ttSinhVienBtn" min="-2" max="-2" attributes="0"/>
+                  <Component id="diemSVbt" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ttSinhVienBtn1" min="-2" max="-2" attributes="0"/>
+                  <Component id="ttSVbt" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ttKhoaBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="ttMonBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="23" max="32767" attributes="0"/>
+                  <EmptySpace pref="31" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="ttGiengVienBtn">
+        <Component class="javax.swing.JButton" name="ttGVBtn">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -124,10 +124,10 @@
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ttGiengVienBtnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ttGVBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ttSinhVienBtn">
+        <Component class="javax.swing.JButton" name="diemSVbt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -135,7 +135,7 @@
             <Property name="text" type="java.lang.String" value="XEM &#x110;I&#x1ec2;M SINH VI&#xca;N"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ttSinhVienBtnActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="diemSVbtActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="ttKhoaBtn">
@@ -143,7 +143,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="XEM TH&#xd4;NG TIN L&#x1eda;P THEO KHOA"/>
+            <Property name="text" type="java.lang.String" value="XEM TH&#xd4;NG TIN L&#x1eda;P TRONG KHOA"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ttKhoaBtnActionPerformed"/>
@@ -154,13 +154,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="XEM TH&#xd4;NG TIN  L&#x1eda;P THEO M&#xd4;N"/>
+            <Property name="text" type="java.lang.String" value="XEM TH&#xd4;NG TIN M&#xd4;N H&#x1ecc;C"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ttMonBtnActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ttSinhVienBtn1">
+        <Component class="javax.swing.JButton" name="ttSVbt">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
@@ -168,7 +168,7 @@
             <Property name="text" type="java.lang.String" value="XEM TH&#xd4;NG TIN SINH VI&#xca;N"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ttSinhVienBtn1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ttSVbtActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
