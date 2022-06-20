@@ -14,7 +14,6 @@ CREATE TABLE GiaoVien
 (
 	MaGV varchar(5) PRIMARY KEY,
 	TenGV varchar(30),
-	MonPT varchar(5),
 	LopPT varchar(8), 
 	MaKhoa varchar(10)
 )
