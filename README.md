@@ -1,2 +1,2 @@
-# java_IS216.M22_3
-Project quan ly diem hoc sinh
+# java_IS216.M22_Nhóm 3
+Project Quản Lý Điểm Sinh Viên
