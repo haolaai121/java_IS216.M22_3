@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f7e7231f-1cb0-4898-b68f-9e447e60a0da">
+	<property name="ireport.zoom" value="1.3310000000000008"/>
+	<property name="ireport.x" value="129"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="MSSV" class="java.lang.String"/>
+	<parameter name="HK" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select SoTC,HocKy,ds.MaSV, TenSV,ds.MaMH,TenMH, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB from DiemSo ds join MonHoc mh on ds.MaMH = mh.MaMH join SinhVien sv on ds.MaSV = sv.MaSV where ds.MaSV = $P{MSSV} and HocKy = $P{HK};]]>
+	</queryString>
+	<field name="SoTC" class="java.lang.Short"/>
+	<field name="HocKy" class="java.lang.Short"/>
+	<field name="MaSV" class="java.lang.String"/>
+	<field name="TenSV" class="java.lang.String"/>
+	<field name="MaMH" class="java.lang.String"/>
+	<field name="TenMH" class="java.lang.String"/>
+	<field name="DiemQT" class="java.lang.Double"/>
+	<field name="DiemTH" class="java.lang.Double"/>
+	<field name="DiemGK" class="java.lang.Double"/>
+	<field name="DiemCK" class="java.lang.Double"/>
+	<field name="DiemTB" class="java.lang.Double"/>
+	<variable name="SoTC_1" class="java.lang.Short" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{SoTC}]]></variableExpression>
+	</variable>
+	<variable name="SoTC_2" class="java.lang.Short" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{SoTC}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="802" height="79" forecolor="#00CB45" backcolor="#FF3041" uuid="16e58e0f-afb0-42b8-961b-df3fce71e405"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto" size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bảng Điểm Sinh Viên]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="400" y="59" width="61" height="20" uuid="2b525294-bef3-4f45-aad2-f6ced83e58b5"/>
+				<textElement>
+					<font fontName="Roboto" size="11" isBold="false" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{HocKy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="356" y="59" width="44" height="20" uuid="9f47404b-0153-47c4-81cb-6c169ebe3ccb"/>
+				<textElement>
+					<font fontName="Roboto" size="11" isBold="false" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Học Kỳ:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="80" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="20" width="100" height="20" uuid="ff1efb5a-d1b3-423e-8ff0-e1d2def7e129"/>
+				<textFieldExpression><![CDATA[$F{MaSV}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="40" width="100" height="20" uuid="4360542b-ba3b-4160-b9cd-69b90213f830"/>
+				<textFieldExpression><![CDATA[$F{TenSV}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="6df16710-2e65-4d38-8593-a5536e007850"/>
+				<textElement>
+					<font fontName="Roboto" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sinh Viên:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="100" height="20" uuid="be76f072-0f46-431f-ba4e-f39a6b6bd51d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Roboto" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Điểm Số:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="100" height="20" uuid="e6af1f8f-0d28-49a7-a2b6-89222554118c"/>
+				<text><![CDATA[Mã Sinh Viên:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="100" height="20" uuid="d5025eb4-bfb4-4266-b124-283f8d4fc381"/>
+				<text><![CDATA[Họ và Tên]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="59" height="20" uuid="c79b9cd9-1c42-4808-95e6-ac13878b0b5b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Môn Học]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="20" width="610" height="1" uuid="9649ba23-e9e5-46b7-8d93-6e58e23d6fcf"/>
+			</line>
+			<staticText>
+				<reportElement x="101" y="1" width="100" height="20" uuid="5ad7f5a9-401b-4028-a6ac-5c4d4e785003"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[Tên Môn Học]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="1" width="61" height="20" uuid="d02768e2-9cdf-4f5c-83e9-4495efa5ab09"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Điểm QT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="1" width="61" height="20" uuid="adb609b0-cd61-4040-b184-cfaddfb5b62c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Điểm TH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="371" y="1" width="61" height="20" uuid="07ca0460-b5fa-468a-8c1e-083efc221453"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Giữa Kỳ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="432" y="1" width="61" height="20" uuid="acb89cda-bc48-438e-9f0c-68e89e15cedb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cuối Kỳ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="493" y="1" width="61" height="20" uuid="0d57fdb0-5251-49ed-a8c3-c2321667b14d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Trung Bình]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="554" y="1" width="57" height="20" uuid="c5d6f70f-5b5b-4818-b995-82ea04ec6151"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Roboto"/>
+				</textElement>
+				<text><![CDATA[Tín Chỉ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="249" y="0" width="61" height="20" uuid="8994b707-7e1c-4239-a7f0-e64932817582"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DiemQT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="0" width="61" height="20" uuid="08c6a695-69d2-4e78-bc2f-9689b814ef3f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DiemGK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="432" y="0" width="61" height="20" uuid="53f3cce5-f6c9-4d16-8376-482ff3dceea8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DiemCK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="493" y="0" width="61" height="20" uuid="b91fe628-2222-48a5-89d0-9ca4d5830430"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DiemTB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="61" height="20" uuid="b9a3183f-845c-406f-9cef-2ea8001e3137"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DiemTH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="100" height="20" uuid="668f1e8c-c6fe-444b-a88a-e664cabcc28b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MaMH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="554" y="0" width="57" height="20" uuid="630aa3eb-8fdf-4539-bf37-aa6f1f2960ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{SoTC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="0" width="149" height="20" uuid="5aa1e5de-9906-4c0d-b47a-3511366da82a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TenMH}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="454" y="0" width="100" height="20" uuid="b935314f-d8e8-479c-aaa0-1ca6940684e1"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Tổng số TC đã học:]]></text>
+			</staticText>
+			<textField evaluationTime="Page">
+				<reportElement x="553" y="0" width="58" height="20" uuid="8fbf2274-100f-4748-9299-4673f686d4ce"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$V{SoTC_2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
