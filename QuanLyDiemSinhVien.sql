@@ -13,7 +13,6 @@ CREATE TABLE GiaoVien
 (
 	MaGV varchar(5) PRIMARY KEY,
 	TenGV varchar(30),
-	MonPT varchar(30),
 	LopPT varchar(8), 
 	MaKhoa varchar(10)
 )
@@ -189,6 +188,40 @@ INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VAL
 INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV07','MH03','GV05','8.9','2.2','5.8','0.2','4.28','2');
 INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV03','MH01','GV06','1.5','9.0','6.1','4.8','5.34','1');
 INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV01','MH09','GV09','0.2','7.8','3.6','3.6','3.81','1');
+
+
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV03','MH01','GV01','7.4','5.8','1.3','4.7','4.8','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV04','MH01','GV01','5.3','4.2','8.8','8.4','6.7','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV07','MH01','GV01','4.5','2.1','7.9','9.9','6.1','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV01','MH02','GV01','9.9','8.2','6.8','3.9','7.2','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV02','MH02','GV01','7.4','2.6','9.8','9.9','7.4','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV04','MH03','GV01','7.4','1.1','7.9','9.9','6.6','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV07','MH03','GV01','5.3','2.1','7.8','3.9','4.8','1');
+
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV01','MH01','GV02','7.4','8.2','4.6','2.1','5.6','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV03','MH01','GV02','7.4','8.2','7.9','6.9','7.6','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV04','MH01','GV02','6.3','2.6','1.4','9.9','5.1','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV07','MH01','GV02','7.4','1','5.8','4.9','4.8','1');
+
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV01','MH02','GV02','7.4','2.1','1.4','9.9','5.2','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV02','MH02','GV02','7.4','8.2','-1.8','9.9','5.9','1');
+
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV03','MH07','GV03','7.4','8.2','7.9','9.9','8.4','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV09','MH07','GV03','6.9','2.1','2','4.9','4','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV05','MH08','GV03','5.5','8.2','3','9.9','6.7','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV07','MH08','GV03','6.9','8.2','9.9','9.9','8.7','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV09','MH08','GV03','7.4','8.2','7.9','7.3','7.7','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV01','MH09','GV03','7.4','8.2','4','9.9','7.4','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV03','MH09','GV03','6.3','3.8','5','9.9','6.3','1');
+INSERT INTO DiemSo (MaSV, MaMH, MaGV, DiemQT, DiemTH, DiemGK, DiemCK, DiemTB,HocKy) VALUES ('SV07','MH09','GV03','7.4','5.4','6','8.3','6.8','1');
+INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV010','MH03','GV01',5,7.5,8.0,6.0,7.0,1);
+INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV03','MH03','GV01',9,7.5,9,8,7.0,1);
+INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV011','MH03','GV01',7,7.5,6,5,8,1);
+
+INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV08','MH04','GV01',9,7.5,9,8,7.0,1);
+INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV09','MH04','GV01',7,7.5,6,5,8,1);
+INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV06','MH04','GV01',8,6,7.5,7,8,1);
+INSERT INTO DiemSo (MaSV,MaMH,MaGV,DiemQT,DiemTH,DiemGK,DiemCK,DiemTB,HocKy) VALUES ('SV02','MH04','GV01',6,5,6,6,7.5,1);
 --Ngành
 INSERT INTO Nganh (MaNganh,TenNganh,MaKhoa) VALUES ('NH01','Ngành 1','KH01');
 INSERT INTO Nganh (MaNganh,TenNganh,MaKhoa) VALUES ('NH02','Ngành 2','KH03');
